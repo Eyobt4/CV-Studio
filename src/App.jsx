@@ -38,14 +38,14 @@ function App() {
   
   const handleAdd = ()=>{
     const newEducation = {
-      id:1,school:"",degree:"",field:"",from:"",to:"",
+      id:Date.now(),school:"",degree:"",field:"",from:"",to:"",
     }
     setCvData((prevData)=>({
       ...prevData,
-      education:{
+      education:[{
         ...prevData.education,
         newEducation
-      }  
+    }]  
     }))
   }
 
@@ -53,10 +53,10 @@ function App() {
     const {name,value}= e.target;
     setCvData((prevData)=>({
       ...prevData,
-      education:{
+      education:[{
 
         ...prevData.education,[name]:value  
-      }}))}
+      }]}))}
 
   const handleSubmit = (e)=>{
     e.preventDefault()

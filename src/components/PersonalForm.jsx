@@ -5,7 +5,7 @@ function PersonalForm({personal,onChange,onSubmit}) {
    
   return (
     <div>
-      <h2>Personal Info</h2>
+      <h2>Personal Input</h2>
       <form onSubmit={onSubmit}>
 
         <input type="text" name="fullname" value={personal.fullname} onChange={onChange} placeholder="Enter your Full name"/>
