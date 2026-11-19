@@ -21,7 +21,7 @@ function App() {
       id:1,school:"",degree:"",field:"",from:"",to:"",
     }],
     experiance:[{
-      id:1, company:"", role:"",from:"",to:"",description:"",
+      id:1, company:"", role:"",description:"",from:"",to:"",
 
     }],
     skills:[]
@@ -36,32 +36,85 @@ function App() {
         ...prevData.personal,[name]:value  
       }}))}
   
-  const handleAdd = ()=>{
+  const handleEduAdd = () => {
     const newEducation = {
-      id:Date.now(),school:"",degree:"",field:"",from:"",to:"",
-    }
-    setCvData((prevData)=>({
-      ...prevData,
-      education:[{
-        ...prevData.education,
-        newEducation
-    }]  
-    }))
-  }
+      id: Date.now(),
+      school: "",
+      degree: "",
+      field: "",
+      from: "",
+      to: "",
+    };
 
-  const handleEducationChange = (e)=>{
-    const {name,value}= e.target;
-    setCvData((prevData)=>({
+    setCvData((prevData) => ({
       ...prevData,
-      education:[{
+      education: [...prevData.education, newEducation],
+    }));
+  };
 
-        ...prevData.education,[name]:value  
-      }]}))}
+  const handleEduChange = (id, e) => {
+    const { name, value } = e.target;
+
+    setCvData((prevData) => ({
+      ...prevData,
+      education: prevData.education.map((item) =>
+        item.id === id ? { ...item, [name]: value } : item
+      ),
+    }));
+  };
+
+  const handleEduDelete = (idToRemove) => {
+    setCvData((prevData) => ({
+      ...prevData,
+      education: prevData.education.filter((item) => item.id !== idToRemove),
+    }));
+  };
 
   const handleSubmit = (e)=>{
     e.preventDefault()
 
   }
+
+  const handleExpAdd = () => {
+    const newExperiance = {
+      id: Date.now(),
+      company: "",
+      role: "",
+      description: "",
+      from: "",
+      to: "",
+    };
+
+    setCvData((prevData) => ({
+      ...prevData,
+      experiance: [...prevData.experiance, newExperiance],
+    }));
+  };
+
+  const handleExpChange = (id, e) => {
+    const { name, value } = e.target;
+
+    setCvData((prevData) => ({
+      ...prevData,
+      experiance: prevData.experiance.map((item) =>
+        item.id === id ? { ...item, [name]: value } : item
+      ),
+    }));
+  };
+
+  const handleExpDelete = (idToRemove) => {
+    setCvData((prevData) => ({
+      ...prevData,
+      experiance: prevData.experiance.filter((item) => item.id !== idToRemove),
+    }));
+  };
+
+
+
+
+
+
+
 
   // console.log(cvData)
   return (
@@ -72,12 +125,18 @@ function App() {
       onChange={handlePersonalChange}
       onSubmit = {handleSubmit}
       education={cvData.education}
-      onEduChange={handleEducationChange}
-      onAddChange = {handleAdd}
+      onEduChange={handleEduChange}
+      onEduAdd = {handleEduAdd}
+      onEduDelete = {handleEduDelete}
+      experiance={cvData.experiance}
+      onExpChange={handleExpChange}
+      onExpAdd = {handleExpAdd}
+      onExpDelete = {handleExpDelete}
       />
       <CvPreview 
       personal={cvData.personal}
       education={cvData.education}
+      experiance={cvData.experiance}
       />
 
     </div>
