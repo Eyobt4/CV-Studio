@@ -30,13 +30,13 @@ function EducationForm({ education, onEduChange, onEduAdd,onEduDelete }) {
             type="date"
             name="from"
             value={item.from}
-            onChange={(e) => onChange(item.id, e)}
+            onChange={(e) => onEduChange(item.id, e)}
           />
           <input
             type="date"
             name="to"
             value={item.to}
-            onChange={(e) => onChange(item.id, e)}
+            onChange={(e) => onEduChange(item.id, e)}
           />
 
           {education.length > 1 && (

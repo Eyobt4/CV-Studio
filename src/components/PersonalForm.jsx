@@ -14,7 +14,6 @@ function PersonalForm({personal,onChange,onSubmit}) {
         <input  name="location" value={personal.location} type="text" onChange={onChange} placeholder="Enter your Location"/>
         <input  name="linkedin" value={personal.linkedin} type="text" onChange={onChange} placeholder="Enter your Linkedin"/>
         <input  name="github" value={personal.github} type="text" onChange={onChange} placeholder="Enter your Github"/>
-        <button type="submit">Submit</button>
       </form>
     </div>
   )

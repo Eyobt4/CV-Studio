@@ -1,9 +1,13 @@
 import EducationForm from "./EducationForm"
 import ExperianceForm from "./ExperianceForm"
 import PersonalForm from "./PersonalForm"
+import SkillsForm from "./SkillsForm"
 
 
-function FormPanel({personal,onChange,onSubmit,education,onEduChange,onEduAdd,onEduDelete,experiance,onExpChange,onExpAdd,onExpDelete}) {
+function FormPanel({personal,onChange,onSubmit,
+  education,onEduChange,onEduAdd,onEduDelete,
+  experiance,onExpChange,onExpAdd,onExpDelete,
+  skills,onSkillsAdd,onSkillsChange,onSkillsDelete}) {
   return (
     <div>
       <PersonalForm
@@ -13,10 +17,10 @@ function FormPanel({personal,onChange,onSubmit,education,onEduChange,onEduAdd,on
       />
       <EducationForm
       education={education}
-      onChange={onEduChange}
+      onEduChange={onEduChange}
       onSubmit = {onSubmit}
-      onAdd = {onEduAdd}
-      onDelete={onEduDelete}
+      onEduAdd = {onEduAdd}
+      onEduDelete={onEduDelete}
       />
       <ExperianceForm
       experiance={experiance}
@@ -24,6 +28,13 @@ function FormPanel({personal,onChange,onSubmit,education,onEduChange,onEduAdd,on
       onSubmit = {onSubmit}
       onExpAdd = {onExpAdd}
       onExpDelete={onExpDelete}
+      />
+      <SkillsForm
+      skills={skills}
+      onSkillsChange={onSkillsChange}
+      onSubmit = {onSubmit}
+      onSkillsAdd = {onSkillsAdd}
+      onSkillsDelete={onSkillsDelete}
       />
 
     </div>

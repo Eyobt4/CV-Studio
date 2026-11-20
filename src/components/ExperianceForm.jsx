@@ -1,5 +1,3 @@
-import React from 'react'
-
 function ExperianceForm({ experiance ,onExpChange,onExpAdd,onExpDelete }) {
   return (
     <div>
@@ -26,7 +24,7 @@ function ExperianceForm({ experiance ,onExpChange,onExpAdd,onExpDelete }) {
             name="description"
             value={item.description}
             onChange={(e) => onExpChange(item.id, e)}
-            placeholder="Enter your study description"
+            placeholder="Enter description"
           />
           <input
             type="date"

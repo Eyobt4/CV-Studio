@@ -2,11 +2,10 @@ import { useState } from "react"
 import NavBar from "./components/NavBar"
 import FormPanel from "./components/FormPanel"
 import CvPreview from "./components/CvPreview"
-import PersonalForm from "./components/PersonalForm"
 
 
 function App() {
-
+  const [preview,setPreview] = useState(false)
   const [cvData, setCvData] = useState({
     personal:{
       fullname:"",
@@ -24,7 +23,8 @@ function App() {
       id:1, company:"", role:"",description:"",from:"",to:"",
 
     }],
-    skills:[]
+    skills:[{
+      id:1,skills:""}]
   });
 
   const handlePersonalChange = (e)=>{
@@ -109,10 +109,97 @@ function App() {
     }));
   };
 
+  const handleSkillsAdd = () => {
+    const newSkill = {
+      id: Date.now(),
+      skills:""
+    };
+
+    setCvData((prevData) => ({
+      ...prevData,
+      skills: [...prevData.skills, newSkill],
+    }));
+  };
+
+  const handleSkillsChange = (id, e) => {
+    const { name, value } = e.target;
+
+    setCvData((prevData) => ({
+      ...prevData,
+      skills: prevData.skills.map((item) =>
+        item.id === id ? { ...item, [name]: value } : item
+      ),
+    }));
+  };
+
+  const handleSkillsDelete = (idToRemove) => {
+    setCvData((prevData) => ({
+      ...prevData,
+      skills: prevData.skills.filter((item) => item.id !== idToRemove),
+    }));
+  };
+
+  const handleClearAll = ()=>{
+    setCvData({
+      personal:{
+      fullname:"",
+      email:"",
+      phone:"",
+      location:"",
+      linkedin:"",
+      github:"",
+
+    },
+    education:[{
+      id:1,school:"",degree:"",field:"",from:"",to:"",
+    }],
+    experiance:[{
+      id:1, company:"", role:"",description:"",from:"",to:"",
+
+    }],
+    skills:[{
+      id:1,skills:""}]
+    });
+  }
 
 
+  const loadExample= ()=>{
+    setCvData({
+      personal:{
+      fullname:"Eyob Tesfaye",
+      email:"eyobtesfaye838@gmail.com",
+      phone:"0924321402",
+      location:"Addis Ababa, Ethiopia",
+      linkedin:"https://www.linkedin.com/",
+      github:"https://github.com/Eyobt4",
 
+    },
+    education:[{
+      id:1,school:"AASTU",degree:"BSc",field:"ElectroMechanical Engineering",from:"2022-01-01",to:"2025-01-01",
+    }],
+    experiance:[{
+      id:1, company:"Safaricom", role:"Frontend Developer",description:"Build responsive product showcase single page web application",from:"2025-01-01",to:"2025-03-01",
 
+    }],
+    skills:[{
+      id:1,skills:"HTML",
+      id:2,skills:"CSS",
+      id:3,skills:"JavaScript",
+    
+    }]
+    })
+  }
+
+  const handlePreview= ()=>{
+    setPreview(true);
+  }
+  const handleEdit= ()=>{
+    setPreview(false);
+  }
+  const handleDownload= ()=>{
+    setPreview(false);
+    window.print();
+  }
 
 
 
@@ -120,6 +207,7 @@ function App() {
   return (
     <div>
       <NavBar/>
+      {!preview &&
       <FormPanel
       personal={cvData.personal}
       onChange={handlePersonalChange}
@@ -132,12 +220,24 @@ function App() {
       onExpChange={handleExpChange}
       onExpAdd = {handleExpAdd}
       onExpDelete = {handleExpDelete}
+      skills={cvData.skills}
+      onSkillsChange={handleSkillsChange}
+      onSkillsAdd = {handleSkillsAdd}
+      onSkillsDelete = {handleSkillsDelete}
       />
-      <CvPreview 
+    }
+      <button onClick={handleClearAll}>Clear All</button>
+      <button onClick={loadExample}>Load Example</button>
+      <button onClick={handlePreview}> Preview </button>
+      <button onClick={handleEdit}> Edit </button>
+      <button onClick={handleDownload}> Download </button>
+      
+      {preview && <CvPreview 
       personal={cvData.personal}
       education={cvData.education}
       experiance={cvData.experiance}
-      />
+      skills={cvData.skills}
+      />}
 
     </div>
   )
