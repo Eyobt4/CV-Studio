@@ -25,8 +25,7 @@ function CvPreview({personal,education,experiance,skills}) {
   return (
     <div className="preview">
       {
-      hasPersonal && <section>
-        <h2 className="cv-header">Personal Info</h2>
+      hasPersonal && <section className="cv-header">
         <h1>{personal.fullname}</h1>
         <p className="cv-contact">{personal.email}</p>
         <p className="cv-contact">{personal.phone}</p>
@@ -37,7 +36,7 @@ function CvPreview({personal,education,experiance,skills}) {
       }
       {hasEducation && 
         <section>
-          <h2 className="cv-header">Education Info</h2>
+          <h2 className="cv-info">Education Info</h2>
           {education.map((item)=>{
             return(
             <div key={item.id}>
@@ -45,30 +44,30 @@ function CvPreview({personal,education,experiance,skills}) {
               <h1>{item.school}</h1>
               <p>{item.degree}</p>
               <p>{item.field}</p>
-              <p>{item.from}</p>
-              <p>{item.to}</p>
+              <p className="date">{item.from}</p>
+              <p className="date">{item.to}</p>
             </div>
           )})}
         </section>
       }
       {
         hasExperiance && <section>
-        <h2 className="cv-header">Experiance Info</h2>
+        <h2 className="cv-info">Experiance Info</h2>
         {experiance.map((item)=>{
           return(
           <div key={item.id}>
             <h1>{item.company}</h1>
             <p>{item.role}</p>
             <p>{item.description}</p>
-            <p>{item.from}</p>
-            <p>{item.to}</p>
+            <p className="date">{item.from}</p>
+            <p className="date">{item.to}</p>
           </div>
         )})}
       </section>
       }
       {
         hasSkills && <section>
-        <h2 className="cv-header">Skills Info</h2>
+        <h2 className="cv-info">Skills Info</h2>
         {skills.map((item)=>{
           return(
           <div key={item.id}>
