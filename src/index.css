@@ -65,7 +65,9 @@ body {
   color: #9ca3af;
   cursor: not-allowed;
 }
-
+.fieldset{
+  border-style: none;
+}
 .no-print button{
 
   padding: 10px 18px;

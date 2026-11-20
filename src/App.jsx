@@ -202,6 +202,10 @@ function App() {
     setPreview(false);
   }
 
+  const handlePreviewToggle = ()=>(
+    setPreview((prev)=>!prev)
+  )
+
 
 
   return (
@@ -211,14 +215,13 @@ function App() {
       <div className="no-print" style={{ display: "flex", gap: "10px", justifyContent: "center", padding: "16px" }}>
         <button type="button" onClick={handleClearAll}>Clear All</button>
         <button type="button" onClick={loadExample}>Load Example</button>
-        <button type="button" disabled={preview} onClick={handlePreview}>Preview</button>
-        <button type="button" disabled={!preview} onClick={handleEdit}>Edit</button>
+        <button type="button"  onClick={handlePreviewToggle}>{preview ? "Edit" : "Preview"}</button>
         <button type="button" onClick={handleDownload}>Download</button>
       </div>
 
       <section className="body">
         <div className="no-print" style={{ flex: 1 }}>
-          <FormPanel
+          {!preview && <FormPanel
             isPreview={preview}
             personal={cvData.personal}
             onChange={handlePersonalChange}
@@ -235,7 +238,8 @@ function App() {
             onSkillsChange={handleSkillsChange}
             onSkillsAdd={handleSkillsAdd}
             onSkillsDelete={handleSkillsDelete}
-          />
+            preview={preview}
+          />}
         </div>
 
         <div style={{ flex: 10.15, position: "sticky", top: "84px" }}>

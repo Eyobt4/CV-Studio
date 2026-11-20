@@ -1,3 +1,4 @@
+import { useState } from "react"
 import EducationForm from "./EducationForm"
 import ExperianceForm from "./ExperianceForm"
 import PersonalForm from "./PersonalForm"
@@ -7,14 +8,19 @@ import SkillsForm from "./SkillsForm"
 function FormPanel({personal,onChange,onSubmit,
   education,onEduChange,onEduAdd,onEduDelete,
   experiance,onExpChange,onExpAdd,onExpDelete,
-  skills,onSkillsAdd,onSkillsChange,onSkillsDelete}) {
+  skills,onSkillsAdd,onSkillsChange,onSkillsDelete,
+  preview
+}) {
   return (
     <div className="input-form">
-      <PersonalForm
-      personal={personal}
-      onChange={onChange}
-      onSubmit = {onSubmit}
-      />
+      <fieldset className="fieldset" disabled={preview}>
+        <PersonalForm
+        personal={personal}
+        onChange={onChange}
+        onSubmit = {onSubmit}
+        />
+
+
       <EducationForm
       education={education}
       onEduChange={onEduChange}
@@ -36,7 +42,7 @@ function FormPanel({personal,onChange,onSubmit,
       onSkillsAdd = {onSkillsAdd}
       onSkillsDelete={onSkillsDelete}
       />
-
+      </fieldset>    
     </div>
   )
 }
