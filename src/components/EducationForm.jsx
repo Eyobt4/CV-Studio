@@ -4,7 +4,7 @@ function EducationForm({ education, onEduChange, onEduAdd,onEduDelete }) {
       <h2>Education Input</h2>
 
       {education.map((item) => (
-        <div key={item.id}>
+        <div key={item.id} className="input-form">
           <input
             type="text"
             name="school"

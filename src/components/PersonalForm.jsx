@@ -6,7 +6,7 @@ function PersonalForm({personal,onChange,onSubmit}) {
   return (
     <div>
       <h2>Personal Input</h2>
-      <form onSubmit={onSubmit}>
+      <div className="input-form">
 
         <input type="text" name="fullname" value={personal.fullname} onChange={onChange} placeholder="Enter your Full name"/>
         <input  name="email" value={personal.email} type="text" onChange={onChange} placeholder="Enter your Email"/>
@@ -14,7 +14,7 @@ function PersonalForm({personal,onChange,onSubmit}) {
         <input  name="location" value={personal.location} type="text" onChange={onChange} placeholder="Enter your Location"/>
         <input  name="linkedin" value={personal.linkedin} type="text" onChange={onChange} placeholder="Enter your Linkedin"/>
         <input  name="github" value={personal.github} type="text" onChange={onChange} placeholder="Enter your Github"/>
-      </form>
+      </div>
     </div>
   )
 }

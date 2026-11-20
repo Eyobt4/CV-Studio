@@ -4,7 +4,7 @@ function ExperianceForm({ experiance ,onExpChange,onExpAdd,onExpDelete }) {
       <h2>Experiance Input</h2>
 
       {experiance.map((item) => (
-        <div key={item.id}>
+        <div key={item.id} className="input-form">
           <input
             type="text"
             name="company"

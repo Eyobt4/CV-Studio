@@ -178,69 +178,77 @@ function App() {
       id:1,school:"AASTU",degree:"BSc",field:"ElectroMechanical Engineering",from:"2022-01-01",to:"2025-01-01",
     }],
     experiance:[{
-      id:1, company:"Safaricom", role:"Frontend Developer",description:"Build responsive product showcase single page web application",from:"2025-01-01",to:"2025-03-01",
+      id:1, company:"Safaricom", role:"Frontend Developer",description:"Build responsive product showcase single page web applications",from:"2025-01-01",to:"2025-03-01",
 
     }],
-    skills:[{
-      id:1,skills:"HTML",
-      id:2,skills:"CSS",
-      id:3,skills:"JavaScript",
+    skills:[
+      {id:1,skills:"HTML",},
+      {id:2,skills:"CSS",},
+      {id:3,skills:"JavaScript",},
     
-    }]
+    ]
     })
   }
 
+  const handleDownload= ()=>{
+    setPreview(false);
+    window.print();
+  }
+  
   const handlePreview= ()=>{
     setPreview(true);
   }
   const handleEdit= ()=>{
     setPreview(false);
   }
-  const handleDownload= ()=>{
-    setPreview(false);
-    window.print();
-  }
 
 
 
-  // console.log(cvData)
   return (
     <div>
-      <NavBar/>
-      {!preview &&
-      <FormPanel
-      personal={cvData.personal}
-      onChange={handlePersonalChange}
-      onSubmit = {handleSubmit}
-      education={cvData.education}
-      onEduChange={handleEduChange}
-      onEduAdd = {handleEduAdd}
-      onEduDelete = {handleEduDelete}
-      experiance={cvData.experiance}
-      onExpChange={handleExpChange}
-      onExpAdd = {handleExpAdd}
-      onExpDelete = {handleExpDelete}
-      skills={cvData.skills}
-      onSkillsChange={handleSkillsChange}
-      onSkillsAdd = {handleSkillsAdd}
-      onSkillsDelete = {handleSkillsDelete}
-      />
-    }
-      <button onClick={handleClearAll}>Clear All</button>
-      <button onClick={loadExample}>Load Example</button>
-      <button onClick={handlePreview}> Preview </button>
-      <button onClick={handleEdit}> Edit </button>
-      <button onClick={handleDownload}> Download </button>
-      
-      {preview && <CvPreview 
-      personal={cvData.personal}
-      education={cvData.education}
-      experiance={cvData.experiance}
-      skills={cvData.skills}
-      />}
+      <NavBar />
 
+      <div className="no-print" style={{ display: "flex", gap: "10px", justifyContent: "center", padding: "16px" }}>
+        <button type="button" onClick={handleClearAll}>Clear All</button>
+        <button type="button" onClick={loadExample}>Load Example</button>
+        <button type="button" disabled={preview} onClick={handlePreview}>Preview</button>
+        <button type="button" disabled={!preview} onClick={handleEdit}>Edit</button>
+        <button type="button" onClick={handleDownload}>Download</button>
+      </div>
+
+      <section className="body">
+        <div className="no-print" style={{ flex: 1 }}>
+          <FormPanel
+            isPreview={preview}
+            personal={cvData.personal}
+            onChange={handlePersonalChange}
+            onSubmit={handleSubmit}
+            education={cvData.education}
+            onEduChange={handleEduChange}
+            onEduAdd={handleEduAdd}
+            onEduDelete={handleEduDelete}
+            experiance={cvData.experiance}
+            onExpChange={handleExpChange}
+            onExpAdd={handleExpAdd}
+            onExpDelete={handleExpDelete}
+            skills={cvData.skills}
+            onSkillsChange={handleSkillsChange}
+            onSkillsAdd={handleSkillsAdd}
+            onSkillsDelete={handleSkillsDelete}
+          />
+        </div>
+
+        <div style={{ flex: 1.15, position: "sticky", top: "84px" }}>
+          <CvPreview
+            personal={cvData.personal}
+            education={cvData.education}
+            experiance={cvData.experiance}
+            skills={cvData.skills}
+          />
+        </div>
+      </section>
     </div>
-  )
+  );
 }
 
 export default App

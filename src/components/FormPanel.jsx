@@ -9,7 +9,7 @@ function FormPanel({personal,onChange,onSubmit,
   experiance,onExpChange,onExpAdd,onExpDelete,
   skills,onSkillsAdd,onSkillsChange,onSkillsDelete}) {
   return (
-    <div>
+    <div className="input-form">
       <PersonalForm
       personal={personal}
       onChange={onChange}

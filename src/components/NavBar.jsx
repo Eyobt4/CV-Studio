@@ -2,9 +2,8 @@
 
 function NavBar() {
   return (
-    <div>
+    <div className="navbar">
       <h2>CV Studio</h2>
-      <button>Download</button>
     </div>
   )
 }

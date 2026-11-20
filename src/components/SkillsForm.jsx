@@ -6,7 +6,7 @@ function SkillsForm({ skills,onSkillsAdd,onSkillsDelete,onSkillsChange }) {
       <h2>Skills Input</h2>
 
       {skills.map((item) => (
-        <div key={item.id}>
+        <div key={item.id} className='input-form'>
           <input
             type="text"
             name="skills"
