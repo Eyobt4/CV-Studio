@@ -238,7 +238,7 @@ function App() {
           />
         </div>
 
-        <div style={{ flex: 1.15, position: "sticky", top: "84px" }}>
+        <div style={{ flex: 10.15, position: "sticky", top: "84px" }}>
           <CvPreview
             personal={cvData.personal}
             education={cvData.education}

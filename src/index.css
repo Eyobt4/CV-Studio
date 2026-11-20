@@ -28,13 +28,7 @@ body {
   gap: 32px;
 }
 
-.preview {
-  flex: 1.15;
-  width: 100%;
-  position: sticky;
-  top: 84px;
-  align-self: flex-start;
-}
+
 .navbar {
   position: sticky;
   top: 0;
@@ -72,6 +66,22 @@ body {
   cursor: not-allowed;
 }
 
+.no-print button{
+
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #1f1627;
+  color: #ffffff;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.input-form button:hover {
+  background-color: #e6e4e8;
+}
 
 .input-form {
   flex: 1;
@@ -148,6 +158,8 @@ body {
 }
 
 .preview {
+
+  align-self: flex-start;
   flex: 1.15;
   width: 100%;
   min-height: 842px;
